@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build --spa",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate --spa",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.2.0",
+    "nuxt": "^3.0.0"
+  },
+  "dependencies": {
+    "@nuxtjs/composition-api": "^0.33.1",
+    "@pinia/nuxt": "^0.4.6",
+    "filestack-js": "^3.25.0",
+    "flowbite": "^1.6.6",
+    "pinia": "^2.0.28",
+    "react": "^18.2.0",
+    "swiper": "^9.4.1",
+    "vee-validate": "^4.7.3",
+    "vue-google-autocomplete": "^1.1.4",
+    "vue-google-maps-address-autocomplete": "^1.0.16",
+    "vue-multiselect": "^3.0.0-alpha.2",
+    "vue-select": "^4.0.0-beta.3"
+  },
+  "overrides": {
+    "vue": "latest"
+  }
+}

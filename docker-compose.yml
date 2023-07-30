@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  app:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    container_name: rideeat-landing-app
+    image: rideeat-landing-app
+    # working_dir: /var/www
+    tty: true
+    volumes:
+      - app-data:/app/dist
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: nginx_webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+        - "8082:80"
+        - "8445:443"
+    volumes: 
+        - app-data:/var/www/app
+        - ./docker-compose/nginx/conf.d/:/etc/nginx/conf.d/
+        - ./certbot/www:/var/www/certbot/:ro
+        - ./certbot/conf/:/etc/nginx/ssl/:ro
+    networks:
+      - app-network
+    
+  certbot:
+    image: certbot/certbot:latest
+    container_name: certbot
+    volumes:
+        - ./certbot/www/:/var/www/certbot/:rw
+        - ./certbot/conf/:/etc/letsencrypt/:rw
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email rideeat080@gmail.com -d rideeat.org --agree-tos
+
+#Docker Networks
+networks:
+    app-network:
+        driver: bridge
+
+volumes:
+  app-data:

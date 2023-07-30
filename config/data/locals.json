@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Oyo State",
+        "value": "oyo",
+        "towns": [
+            {
+                "name": "Ogbomoso",
+                "value": "ogbomoso",
+                "locals": [
+                    {"name": "Under G", "value": "under_g"},
+                    {"name": "Adenike", "value": "adenike"}
+                ]
+            }
+        ]
+    }
+]
